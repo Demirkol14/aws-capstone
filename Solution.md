@@ -158,7 +158,7 @@ SSH (22)    ----> anywhere
 
 - Create a parameter for `database master password`  :
 
- `Name`         : /<yourname>/capstone/password               
+ `Name`         : /deco/capstone/password               
  `Description`  : ---
  `Tier`         : Standard
  `Type`         : SecureString   (So AWS encrypts sensitive data using KMS)
@@ -167,7 +167,7 @@ SSH (22)    ----> anywhere
 
 - Create parameter for `database username`  :
 
- `Name`         : /<yourname>/capstone/username             
+ `Name`         : /deco/capstone/username             
  `Description`  : ---
  `Tier`         : Standard
  `Type`         : SecureString   (So AWS encrypts sensitive data using KMS)
@@ -176,7 +176,7 @@ SSH (22)    ----> anywhere
 
 - Create parameter for `Github TOKEN`  :
 
- `Name`         : /<yourname>/capstone/token             
+ `Name`         : /deco/capstone/token             
  `Description`  : ---
  `Tier`         : Standard
  `Type`         : SecureString   (So AWS encrypts sensitive data using KMS)
