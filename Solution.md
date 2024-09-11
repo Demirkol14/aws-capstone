@@ -277,9 +277,9 @@ save changes
 Before we create our cluster. We need to launch NAT instance. Because, our EC2 created by autoscaling groups will be located in private subnet and they need to update themselves, install required files and also need to download folders and files from Github. But you can not create Amazon Linux NAT instance from console anymore. You need to run NAT instance via CLI. So check your CLI configurations.
 
 ```text 
-aws ec2 run-instances --image-id ami-0aa210fd2121a98b7 --instance-type t2.micro --key-name XXX --security-group-ids sg-XXX-natsecgrp --subnet-id subnet-XXX-publicone
+aws ec2 run-instances --image-id ami-0aa210fd2121a98b7 --instance-type t2.micro --key-name firstkey --security-group-ids sg-0d54e5e6fe97b12e6 --subnet-id subnet-0e89d1c96219acde6
 
-aws ec2 run-instances --image-id ami-0aa210fd2121a98b7 --instance-type t2.micro --key-name osvaldo --security-group-ids sg-0397823f99252679e  --subnet-id subnet-0af14f63b6eb1fd3a
+aws ec2 run-instances --image-id ami-0aa210fd2121a98b7 --instance-type t2.micro --key-name firstkey --security-group-ids sg-0d54e5e6fe97b12e6 --subnet-id subnet-0e89d1c96219acde6
 
 
     - `ami-0aa210fd2121a98b7` 
@@ -399,6 +399,8 @@ Instance properties:
 
 ```bash
 sudo su
+
+#!/bin/bash
 apt-get update -y
 apt-get upgrade -y
 apt-get install git -y
@@ -407,12 +409,12 @@ apt install python3-pip -y
 pip3 install boto3
 apt  install awscli -y
 cd /home/ubuntu/
-TOKEN=$(aws --region=us-east-1 ssm get-parameter --name /<yourname>/capstone/token --with-decryption --query 'Parameter.Value' --output text)
-git clone https://$TOKEN@github.com/<yourreponame>/aws-capstone-project.git
-cd /home/ubuntu/aws-capstone-project
+TOKEN=$(aws --region=us-east-1 ssm get-parameter --name /deco/capstone/token --with-decryption --query 'Parameter.Value' --output text)
+git clone https://$TOKEN@github.com/Demirkol14/aws-capstone.git
+cd /home/ubuntu/aws-capstone
 apt-get install python3.10-dev default-libmysqlclient-dev -y
 pip3 install -r requirements.txt
-cd /home/ubuntu/aws-capstone-project/src
+cd /home/ubuntu/aws-capstone/src
 python3 manage.py collectstatic --noinput
 python3 manage.py makemigrations
 python3 manage.py migrate
